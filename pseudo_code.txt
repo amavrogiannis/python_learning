@@ -1,0 +1,46 @@
+This is a pseudo code, which writes the algorithm down in plain english. 
+
+import module
+
+# Set up function
+function gane_rules:
+    rock > scissors
+        then "rock wins"
+    scissors > paper
+        then "scissors wins"
+    paper > rock
+        then "paper wins"
+
+
+make a shuffle
+
+function user_oponent:
+    # Add error handling that enforces user to input the specific object. 
+    "hello, please write your object: "
+    object = input(from the user)
+
+    "you selected %object"
+
+function computer_shuffle:
+    objects = [rock, paper, scissors]
+    "The computer selected: random.choice(objects)"
+
+function decision:
+    if user_oponent == rock:
+        if computer_shuffle == rock:
+            "draw:
+        if computer_shuffle > 
+
+    if user_oponent > computer_shuffle
+        "the user wins"
+    if user_oponent < computer_shuffle
+        "the computer wins"
+    if user_oponent == computer_shuffle
+        "it is a draw"
+    else
+        "objects unknown try - rematch"
+
+function main:
+    user_oponent()
+    computer_shuffle()
+    function decision(user_oponent, computer_shuffle)
