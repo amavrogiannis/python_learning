@@ -21,7 +21,6 @@ def robot_player():
 
 """ Decision """
 def game_decision(user_input, robot_selection):
-
     if user_input == robot_selection:
         print("This round is a DRAW")
     elif user_input == object_list[0]:
