@@ -26,19 +26,19 @@ def game_decision(user_input, robot_selection):
         print("This round is a DRAW")
     elif user_input == object_list[0]:
         if robot_selection == object_list[1]:
-            print(f"You lose! {robot_selection} covers {user_input}")
+            print(f"You LOSE! {robot_selection} covers {user_input}")
         else:
-            print(f"You win! {user_input} smashes {robot_selection}")
+            print(f"You WIN! {user_input} smashes {robot_selection}")
     elif user_input == object_list[1]:
         if robot_selection == object_list[2]:
-            print(f"You lose! {robot_selection} cuts {user_input}")
+            print(f"You LOSE! {robot_selection} cuts {user_input}")
         else:
-            print(f"You win! {user_input} covers {robot_selection}")
+            print(f"You WIN! {user_input} covers {robot_selection}")
     elif user_input == object_list[2]:
         if robot_selection == object_list[0]:
-            print(f"You lose! {robot_selection} smashes {user_input}")
+            print(f"You LOSE! {robot_selection} smashes {user_input}")
         else:
-            print(f"You win! {user_input} cuts {robot_selection}")
+            print(f"You WIN! {user_input} cuts {robot_selection}")
 
 def main():
     """ This is the main function """
