@@ -10,9 +10,9 @@ def human_player():
     while True:
         user_input = input("Please input your object 👉 ").lower()
         if user_input in object_list:
-            return print(f"👤 You selected 👉 {user_input.upper()}")
+            print(f"👤 You selected 👉 {user_input.upper()}")
+            return user_input
         print(f"This object is invalid, please select one of the following: \n {object_list}") 
-        return user_input
 
 """ Robot's selected object """
 def robot_player():
@@ -39,14 +39,11 @@ def game_decision(user_input, robot_selection):
             print(f"You lose! {robot_selection} smashes {user_input}")
         else:
             print(f"You win! {user_input} cuts {robot_selection}")
-    return game_decision(user_input, robot_selection)
-
 
 def main():
     """ This is the main function """
-    user_input=human_player()
-    robot_selection=robot_player()
+    user_input = human_player()
+    robot_selection = robot_player()
     game_decision(user_input, robot_selection)
-
 
 main()
