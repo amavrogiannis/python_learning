@@ -34,3 +34,6 @@ def test_draw():
     scoreboard.draw()
     assert scoreboard.human_score == 1
     assert scoreboard.robot_score == 1
+
+def test_game_decision():
+    
