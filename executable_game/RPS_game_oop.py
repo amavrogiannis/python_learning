@@ -23,7 +23,6 @@ class Scoreboard:
         self.robot_score += 1
 
     def game_scores(self):
-        print("GAME SUMMARY:")
         return f"Human: {self.human_score}\nComputer: {self.robot_score}"
 
 """ Human selected object """
@@ -46,38 +45,41 @@ def robot_player():
 
 # """ This function writen the game decision """
 def game_decision(scoreboard, user_input, robot_selection):
+    result = ""
     """ This generator is set to decide who wins according to human vs computer selected object """
     if user_input == robot_selection:
-        print("This round is a DRAW")
+        result = "This round is a DRAW"
         # score value on resulting draw
         scoreboard.draw()
     elif user_input == GAME_OBJECTS[0]:
         if robot_selection == GAME_OBJECTS[1]:
-            print(f"You LOSE! {robot_selection} covers {user_input}")
+            result = f"You LOSE! {robot_selection} covers {user_input}"
             # score value on win result
             scoreboard.add_robot_score()
         else:
-            print(f"You WIN! {user_input} smashes {robot_selection}")
+            result = f"You WIN! {user_input} smashes {robot_selection}"
             # score value on win result
             scoreboard.add_human_score()
     elif user_input == GAME_OBJECTS[1]:
         if robot_selection == GAME_OBJECTS[2]:
-            print(f"You LOSE! {robot_selection} cuts {user_input}")
+            result = f"You LOSE! {robot_selection} cuts {user_input}"
             # score value on win result
             scoreboard.add_robot_score()
         else:
-            print(f"You WIN! {user_input} covers {robot_selection}")
+            result = f"You WIN! {user_input} covers {robot_selection}"
             # score value on win result
             scoreboard.add_human_score()
     elif user_input == GAME_OBJECTS[2]:
         if robot_selection == GAME_OBJECTS[0]:
-            print(f"You LOSE! {robot_selection} smashes {user_input}")
+            result = f"You LOSE! {robot_selection} smashes {user_input}"
             # score value on win result
             scoreboard.add_robot_score()
         else:
-            print(f"You WIN! {user_input} cuts {robot_selection}")
+            result = f"You WIN! {user_input} cuts {robot_selection}"
             # score value on win result
             scoreboard.add_human_score()
+    
+    return result
 
 # """ This function allows the user to resume the game """
 def player_resume():
@@ -99,6 +101,7 @@ def main():
             user_input = human_player()
             robot_selection = robot_player()
             game_decision(scoreboard, user_input, robot_selection)
+            print("GAME SUMMARY:")
             print(scoreboard.game_scores())
             player_resume()
 
