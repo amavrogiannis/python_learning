@@ -1,11 +1,6 @@
-import RPS_game_oop
-from RPS_game_oop import human_player, Scoreboard, game_decision, GAME_OBJECTS
-import random
-import mock
-import builtins
-import unittest
-import sys
-import pytest
+from RPS_game_oop import human_player, Scoreboard, main, game_decision, GAME_OBJECTS
+import builtins, pytest, random, mock, unittest, sys, io
+
 
 '''Testing Scoreboard class - which objects are adding 3 points to the winner (Human vs Robot) and adding 1 point each, when the round is tied.'''
 class TestScoreboard(unittest.TestCase): 
@@ -25,10 +20,6 @@ class TestScoreboard(unittest.TestCase):
         draw_score.draw()
         self.assertEqual(draw_score.game_scores(), f"Human: {0 + 1}\nComputer: {0 + 1}")
 
-@pytest.fixture
-def scoreboard():
-    return Scoreboard()
-
 def test_human_player():
     test_var = random.choice(GAME_OBJECTS)
     with mock.patch.object(builtins, 'input', lambda _: test_var):
@@ -37,24 +28,27 @@ def test_human_player():
         else: 
             return 1
 
-winning_obj = GAME_OBJECTS[2]
-lossing_obj = GAME_OBJECTS[0]
+winning_obj = GAME_OBJECTS[0]
+lossing_obj = GAME_OBJECTS[2]
+draw_obj = GAME_OBJECTS[1]
 
-@pytest.mark.usefixtures
-def test_game_decision_draw():
-    result = game_decision(scoreboard, winning_obj, winning_obj)
-    assert result == "This round is a DRAW"
-    # assert scoreboard == 
-
-@pytest.mark.usefixtures
-def test_game_decision_user_loses():
-    result = game_decision(scoreboard, lossing_obj, winning_obj)
-    assert result == "You LOSE! rock smashes scissors"
-    assert scoreboard == 3
-
-@pytest.mark.unit
-def test_game_decision_user_wins():
-    # Check that the game_decision() function returns the expected value and that the Scoreboard object is updated correctly.
+@pytest.fixture
+def test_win():
+    scoreboard == Scoreboard()
     result = game_decision(scoreboard, winning_obj, lossing_obj)
-    assert result == "You WIN! rock smashes scissors"
+    assert result == 'You WIN! rock smashes scissors'
     assert scoreboard == 3
+
+@pytest.Class.from_parent.__class__()
+def test_lose():
+    scoreboard == Scoreboard()
+    result = game_decision(scoreboard, winning_obj, lossing_obj)
+    assert result == 'You LOSE! rock smashes scissors'
+    assert scoreboard == 3
+
+@pytest.fixture
+def test_draw():
+    scoreboard == Scoreboard()
+    result = game_decision(scoreboard, draw_obj, draw_obj)
+    assert result == 'This round is a DRAW'
+    assert scoreboard.draw == 1
