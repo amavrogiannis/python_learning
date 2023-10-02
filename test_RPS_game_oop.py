@@ -1,6 +1,7 @@
-from RPS_game_oop import human_player, Scoreboard, main, game_decision, GAME_OBJECTS
+from RPS_game_oop import human_player, Scoreboard, main, game_decision, player_resume, GAME_OBJECTS
 import builtins, pytest, random, mock, unittest, sys, io
 
+scoreboard = Scoreboard()
 
 '''Testing Scoreboard class - which objects are adding 3 points to the winner (Human vs Robot) and adding 1 point each, when the round is tied.'''
 class TestScoreboard(unittest.TestCase): 
@@ -28,27 +29,30 @@ def test_human_player():
         else: 
             return 1
 
-winning_obj = GAME_OBJECTS[0]
-lossing_obj = GAME_OBJECTS[2]
-draw_obj = GAME_OBJECTS[1]
+def test_win(capsys):
+    game_decision(scoreboard, user_input="rock", robot_selection="scissors")
 
-@pytest.fixture
-def test_win():
-    scoreboard == Scoreboard()
-    result = game_decision(scoreboard, winning_obj, lossing_obj)
-    assert result == 'You WIN! rock smashes scissors'
-    assert scoreboard == 3
+    capture = capsys.readouterr()
+    capture_stdout = capture.out.strip()
 
-@pytest.Class.from_parent.__class__()
-def test_lose():
-    scoreboard == Scoreboard()
-    result = game_decision(scoreboard, winning_obj, lossing_obj)
-    assert result == 'You LOSE! rock smashes scissors'
-    assert scoreboard == 3
+    assert 'You WIN! rock smashes scissors' in capture_stdout
 
-@pytest.fixture
-def test_draw():
-    scoreboard == Scoreboard()
-    result = game_decision(scoreboard, draw_obj, draw_obj)
-    assert result == 'This round is a DRAW'
-    assert scoreboard.draw == 1
+def test_lose(capsys):
+    win = "scissors"
+    lose = "paper"
+    game_decision(scoreboard, user_input=lose, robot_selection=win)
+
+    capture = capsys.readouterr()
+    capture_stdout = capture.out.strip()
+
+    assert 'You LOSE! scissors cuts paper' in capture_stdout
+
+def test_draw(capsys):
+    draw_obj = 'rock'
+    draw_obj = 'rock'
+    result = game_decision(scoreboard, user_input=draw_obj, robot_selection=draw_obj)
+
+    capture = capsys.readouterr()
+    capture_stdout = capture.out.strip()
+
+    assert 'This round is a DRAW' in capture_stdout
