@@ -1,4 +1,5 @@
-# Checklist
+# TDD Exercise
+## Checklist
 - [x] Create an BankAccount class 
 - [ ] Make sure it can track the following account variables 
     - [x] Funds
