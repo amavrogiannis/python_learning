@@ -18,7 +18,7 @@ jobs:
           cache: pip
           cache-dependency-path: 'account_oop_exercise/'
       - run: |
-          pip -m install --upgrade pip
+          pip install --upgrade pip
           pip install pylint pytest 
 
   lint:
