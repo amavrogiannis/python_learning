@@ -12,6 +12,7 @@ jobs:
       run:
         working-directory: ./account_oop_exercise
     steps:
+      - name: Checkout
       - uses: action/checkout@v4
       - name: Init dependencies
       - uses: actions/setup-python@v4
