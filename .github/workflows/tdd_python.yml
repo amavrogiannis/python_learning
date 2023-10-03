@@ -28,12 +28,12 @@ jobs:
       run:
         working-directory: ./account_oop_exercise
     steps:
-    - name: Lint checks
-      uses: actions/setup-python@v4
-      with:
-        python-version: '3.10'
-        cache-dependency-path: 'requirements.txt'
-      run: pylint test_account.py
+      - name: Lint checks
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+          cache-dependency-path: 'requirements.txt'
+        run: pylint test_account.py
 
   test:
     runs-on: "ubuntu-latest"
@@ -41,9 +41,9 @@ jobs:
       run:
         working-directory: ./account_oop_exercise
     steps:
-    - name: Test script
-      uses: actions/setup-python@v4
-      with:
-        python-version: '3.10'
-        cache-dependency-path: 'requirements.txt'
-      run: pytest test_account.py
+      - name: Test script
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+          cache-dependency-path: 'requirements.txt'
+        run: pytest test_account.py
