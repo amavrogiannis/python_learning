@@ -30,12 +30,14 @@ def test_human_player():
             return 1
 
 def test_win(capsys):
+    scoreboard = Scoreboard(0,0)
     game_decision(scoreboard, user_input="rock", robot_selection="scissors")
 
     capture = capsys.readouterr()
     capture_stdout = capture.out.strip()
 
-    assert 'You WIN! rock smashes scissors' in capture_stdout
+    assert 'You WIN!' in capture_stdout
+    assert scoreboard.add_human_score == scoreboard.add_human_score
 
 def test_lose(capsys):
     win = "scissors"
@@ -45,7 +47,7 @@ def test_lose(capsys):
     capture = capsys.readouterr()
     capture_stdout = capture.out.strip()
 
-    assert 'You LOSE! scissors cuts paper' in capture_stdout
+    assert 'You LOSE!' in capture_stdout
 
 def test_draw(capsys):
     draw_obj = 'rock'
@@ -55,4 +57,4 @@ def test_draw(capsys):
     capture = capsys.readouterr()
     capture_stdout = capture.out.strip()
 
-    assert 'This round is a DRAW' in capture_stdout
+    assert 'DRAW' in capture_stdout

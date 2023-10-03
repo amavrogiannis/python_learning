@@ -14,13 +14,18 @@ class Scoreboard:
 
     def add_human_score(self):
         self.human_score += 3
+        # return self.human_score
+        print(self.human_score)
 
     def add_robot_score(self):
         self.robot_score += 3
+        print(self.robot_score)
 
     def draw(self):
         self.human_score += 1
         self.robot_score += 1
+        print(self.human_score)
+        print(self.robot_score)
 
     def game_scores(self):
         print("GAME SUMMARY:")
