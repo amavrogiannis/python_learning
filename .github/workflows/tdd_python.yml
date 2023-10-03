@@ -48,4 +48,4 @@ jobs:
         with:
           python-version: '3.10'
           cache-dependency-path: 'requirements.txt'
-        run: pytest test_account.py
+      - run: pytest test_account.py
