@@ -1,7 +1,10 @@
-from account import BankAccount
+"""Importing modules to test script"""
 import unittest
+from account import BankAccount
 
 class TestBankAccount(unittest.TestCase):
+    """Testing class BankAccount"""
+
     def setUp(self):
         """Setup fixtures"""
         self.account = BankAccount()
@@ -19,7 +22,7 @@ class TestBankAccount(unittest.TestCase):
         self.account.balance += self.account.deposit
 
         self.assertEqual(self.account.balance, 35)
-    
+
     def test_withdraw(self):
         """Testing the withdraw ammount from the account"""
         self.account.balance = 20
