@@ -21,7 +21,7 @@ jobs:
 
       - name: Init dependencies
         working-directory: ./account_oop_exercise
-      - run: |
+        run: |
           pip install --upgrade pip
           pip install pylint pytest
 
@@ -37,36 +37,32 @@ jobs:
     needs: init
     runs-on: "ubuntu-latest"
     steps:
+      - name: Restore cache
+        uses: actions/cache@v3
+        with:
+          key: cache-dependencies-${{ github.run_id }}
+          path: ~/.cache/pip
+
       - name: Lint checks
         uses: actions/setup-python@v4
         with:
           python-version: '3.10'
           cache: pip
-
-      - name: Restore cache
-        working-directory: ./account_oop_exercise
-        uses: actions/cache@v3
-        with:
-          key: cache-dependencies-${{ github.run_id }}
-          path: ~/.cache/pip
-
-      - run: pylint test_account.py
+      - run: pylint account_oop_exercise/test_account.py
 
   test:
     needs: lint
     runs-on: "ubuntu-latest"
     steps:
-      - name: Test script
-        uses: actions/setup-python@v4
-        with:
-          python-version: '3.10'
-          cache: pip
-
       - name: Restore cache
-        working-directory: ./account_oop_exercise
         uses: actions/cache@v3
         with:
           key: cache-dependencies-${{ github.run_id }}
           path: ~/.cache/pip
 
+      - name: Test script
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+          cache: pip
       - run: pytest test_account.py
