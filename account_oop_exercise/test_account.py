@@ -1,51 +1,56 @@
-"""Importing modules to test script"""
-import unittest
+"""
+Bank Account - TDD Exercise - Test Script
+"""
+import pytest
 from account import BankAccount
 
-class TestBankAccount(unittest.TestCase):
-    """Testing class BankAccount"""
+def test_account_balance():
+    """ Testing BankAccount balance object """
+    account_this = BankAccount(100.00)
 
-    def setUp(self):
-        """Setup fixtures"""
-        self.account = BankAccount()
+    assert account_this.balance == 100.00
 
-    def test_account_balance(self):
-        """ This function will test the account balance that is given to the account """
-        self.account.balance = 20.0
-        self.assertEqual(self.account.balance, 20.0)
+def test_deposit():
+    """ Testing BankAccount deposit object """
+    account_this = BankAccount(100.00)
+    account_this.deposit(50.00)
 
-    def test_deposit(self):
-        """Testing the deposit ammount to the account"""
-        self.account.balance = 15
-        self.account.deposit = 20
+    assert account_this.balance == 150.00
 
-        self.account.balance += self.account.deposit
+def test_withdraw():
+    """ Testing BankAccount withdraw object """
+    account_this = BankAccount(100.00)
+    account_this.withdraw(20.00)
 
-        self.assertEqual(self.account.balance, 35)
+    assert account_this.balance == 80.00
 
-    def test_withdraw(self):
-        """Testing the withdraw ammount from the account"""
-        self.account.balance = 20
-        self.account.withdraw = 5
-        if self.account.balance > self.account.withdraw:
-            self.account.balance -= self.account.withdraw
-        else:
-            print('Insufficient ammount')
+def test_withdraw_fail():
+    """ Testing BankAccount withdraw FAIL object """
+    account_this = BankAccount(100.00)
+    account_this.withdraw(200.00)
 
-        self.assertEqual(self.account.balance, 15)
+    assert pytest.raises(ValueError, match='Withdraw declined. Insufficient funds.')
 
-    def test_transfer(self):
-        """Transfer funds to another account"""
-        self.account.balance = 50
-        self.account.transfer = 20
-        if self.account.balance > self.account.transfer:
-            self.account.balance -= self.account.transfer
-        else:
-            print('Insufficient ammount')
+def test_transfer():
+    """ Testing BankAccount transfer object """
+    account_one = BankAccount(100.00)
+    account_two = BankAccount(10.00)
+    account_one.transfer(account_two, 40.00)
 
-        self.assertEqual(self.account.balance, 30)
+    assert account_one.balance == 60.00
+    assert account_two.balance == 50.00
 
+def test_transfer_fail():
+    """ Testing BankAccount transfer FAIL object """
+    account_this = BankAccount(100.00)
+    account_this.withdraw(200.00)
 
+    assert pytest.raises(ValueError, match='Transfer declined. Insufficient funds.')
 
-if __name__ == '__main__':
-    unittest.main()
+def test_transaction():
+    """ Testing BankAccount transaction """
+    account_this = BankAccount(100.00)
+    account_this.withdraw(20.00)
+    account_this.deposit(50.00)
+
+    assert account_this.transaction == ['WD: 20.0', 'DP: 50.0']

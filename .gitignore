@@ -2,3 +2,4 @@ __pycache__/
 .pytest_cache/
 class_testing_example.py
 **jenkins/**
+account_oop_exercise/exercism.sh
