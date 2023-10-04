@@ -54,3 +54,4 @@ def test_transaction():
     account_this.deposit(50.00)
 
     assert account_this.transaction == ['WD: 20.0', 'DP: 50.0']
+
