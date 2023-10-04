@@ -15,8 +15,8 @@ jobs:
           python-version: '3.10'
           cache: 'pipenv'
           cache-dependency-path: |
-            account_oop_exercise/Pipfile.lock
-            account_oop_exercise/Pipfile
+            ./account_oop_exercise/Pipfile.lock
+            ./account_oop_exercise/Pipfile
       - name: Install pipenv
         run: curl https://raw.githubusercontent.com/pypa/pipenv/master/get-pipenv.py | python
       - run: pipenv install
