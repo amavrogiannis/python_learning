@@ -37,6 +37,12 @@ jobs:
     needs: init
     runs-on: "ubuntu-latest"
     steps:
+      - name: Lint checks
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+          cache: pip
+
       - name: Restore cache
         working-directory: ./account_oop_exercise
         uses: actions/cache@v3
@@ -44,14 +50,18 @@ jobs:
           key: cache-dependencies-${{ github.run_id }}
           path: ~/.cache/pip
 
-      - name: Lint checks
-        uses: actions/setup-python@v4
       - run: pylint test_account.py
 
   test:
     needs: lint
     runs-on: "ubuntu-latest"
     steps:
+      - name: Test script
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+          cache: pip
+
       - name: Restore cache
         working-directory: ./account_oop_exercise
         uses: actions/cache@v3
@@ -59,9 +69,4 @@ jobs:
           key: cache-dependencies-${{ github.run_id }}
           path: ~/.cache/pip
 
-      - name: Test script
-        uses: actions/setup-python@v4
-        with:
-          python-version: '3.10'
-          cache: pip
       - run: pytest test_account.py
