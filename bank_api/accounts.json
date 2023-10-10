@@ -1,0 +1,133 @@
+[
+    {
+        "account_id": 1001,
+        "balance": 2800,
+        "transactions": [
+            {
+                "time": "06/10/2023 11:08:30",
+                "amount": 100,
+                "balance": 2000
+            },
+            {
+                "time": "06/10/2023 11:08:41",
+                "amount": 100,
+                "balance": 2100
+            },
+            {
+                "time": "06/10/2023 11:08:42",
+                "amount": 100,
+                "balance": 2200
+            },
+            {
+                "time": "06/10/2023 11:08:42",
+                "amount": 100,
+                "balance": 2300
+            },
+            {
+                "time": "06/10/2023 11:08:42",
+                "amount": 100,
+                "balance": 2400
+            },
+            {
+                "time": "06/10/2023 14:01:42",
+                "amount": 400,
+                "balance": 2800
+            }
+        ]
+    },
+    {
+        "account_id": 1002,
+        "balance": 1650,
+        "transactions": [
+            {
+                "time": "06/10/2023 14:02:01",
+                "amount": 250,
+                "balance": 1750
+            },
+            {
+                "time": "06/10/2023 14:03:26",
+                "amount": -50,
+                "balance": 1700
+            },
+            {
+                "time": "06/10/2023 14:03:30",
+                "amount": -50,
+                "balance": 1650
+            }
+        ]
+    },
+    {
+        "account_id": 1003,
+        "balance": 1850,
+        "transactions": [
+            {
+                "time": "06/10/2023 14:04:49",
+                "amount": -150,
+                "balance": 1850
+            },
+            {
+                "time": "06/10/2023 14:04:51",
+                "amount": -150,
+                "balance": 1700
+            },
+            {
+                "time": "06/10/2023 14:04:57",
+                "amount": 150,
+                "balance": 1850
+            }
+        ]
+    },
+    {
+        "account_id": 1004,
+        "balance": 635,
+        "transactions": [
+            {
+                "time": "06/10/2023 14:05:02",
+                "amount": 150,
+                "balance": 650
+            },
+            {
+                "time": "06/10/2023 14:05:08",
+                "amount": -15,
+                "balance": 635
+            }
+        ]
+    },
+    {
+        "account_id": 1005,
+        "balance": 3485,
+        "transactions": [
+            {
+                "time": "06/10/2023 14:05:13",
+                "amount": -15,
+                "balance": 3485
+            }
+        ]
+    },
+    {
+        "account_id": 1006,
+        "balance": 400,
+        "transactions": [
+            {
+                "time": "06/10/2023 14:05:23",
+                "amount": 150,
+                "balance": 400
+            }
+        ]
+    },
+    {
+        "account_id": 1007,
+        "balance": 50,
+        "transactions": []
+    },
+    {
+        "account_id": 1008,
+        "balance": 100,
+        "transactions": []
+    },
+    {
+        "account_id": 1009,
+        "balance": 4000,
+        "transactions": []
+    }
+]
