@@ -34,10 +34,6 @@ jobs:
           python-version: '3.10'
           cache: pip
 
-      - name: Install dependencies
-        run: |
-          pip install pylint
-
       - run: pylint account.py
 
   # test:
