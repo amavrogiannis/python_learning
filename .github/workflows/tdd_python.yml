@@ -26,12 +26,11 @@ jobs:
           pwd && ls
           pip install -r ./requirements.txt 
 
-      # - id: cache-pipenv
-      #   uses: actions/cache@v3
-      #   with:
-      #     key: ${{ runner.os }}-pipenv-${{ hashFiles('**/requirements.txt') }}
-      #     path: |
-      #     ${{ env.WORKON_HOME }}
+      - id: cache-pipenv
+        uses: actions/cache@v3
+        with:
+          key: ${{ runner.os }}-pipenv-${{ hashFiles('**/requirements.txt') }}
+          path: ~/.cache/pip
 
   lint:
     needs: init
@@ -45,13 +44,11 @@ jobs:
           python-version: '3.10'
           cache: pip
 
-      # - name: Restore cache
-      #   uses: actions/cache@v3
-      #   with:
-      #     key: ${{ runner.os }}-pipenv-${{ hashFiles('**/Pipfile.lock') }}
-      #     path: |
-      #       ./Pipfile
-      #       ./Pipfile.lock
+      - name: Restore cache
+        uses: actions/cache@v3
+        with:
+          key: ${{ runner.os }}-pipenv-${{ hashFiles('**/requirements.txt') }}
+          path: ~/.cache/pip
 
       - run: pylint account.py
 
