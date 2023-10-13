@@ -33,32 +33,27 @@ jobs:
             ./Pipfile
             ./Pipfile.lock
 
+  lint:
+    needs: init
+    runs-on: "ubuntu-latest"
+    steps:
+      - uses: actions/checkout@v4
 
-        # cache-dependency-path: |
-        #   ./account_oop_exercise/Pipfile.lock
-        #   ./account_oop_exercise/Pipfile
+      - name: Lint checks
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+          cache: pip
 
-        # working-directory: ./account_oop_exercise
+      - name: Restore cache
+        uses: actions/cache@v3
+        with:
+          key: ${{ runner.os }}-pipenv-${{ hashFiles('**/Pipfile.lock') }}
+          path: |
+            ./Pipfile
+            ./Pipfile.lock
 
-  # lint:
-  #   needs: init
-  #   runs-on: "ubuntu-latest"
-  #   steps:
-  #     - uses: actions/checkout@v4
-
-  #     - name: Lint checks
-  #       uses: actions/setup-python@v4
-  #       with:
-  #         python-version: '3.10'
-  #         cache: pip
-
-  #     - name: Restore cache
-  #       uses: actions/cache@v3
-  #       with:
-  #         key: cache-dependencies-${{ github.sha }}
-  #         path: ./*
-
-  #     - run: pylint account_oop_exercise/test_account.py
+      - run: pipenv run pylint account.py
 
   # test:
   #   needs: lint
