@@ -23,7 +23,7 @@ jobs:
       - id: cache-pipenv
         uses: actions/cache@v3
         with:
-          key: ${{ runner.os }}-pipenv-${{ hashFiles('**/Pipfile.locl') }}
+          key: ${{ runner.os }}-pipenv-${{ hashFiles('**/Pipfile.lock') }}
           path: ~/.local/share/vurtualenvs
       
       - name: Install dependencies
