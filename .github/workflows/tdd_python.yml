@@ -27,6 +27,7 @@ jobs:
           path: ~/.local/share/vurtualenvs
       
       - name: Install dependencies
+        if: steps.cache-pipenv.outputs.cache-hit != 'true'
         run: |
           pwd && ls
           pipenv install -r ./requirements.txt --deploy
