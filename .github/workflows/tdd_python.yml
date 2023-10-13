@@ -28,7 +28,7 @@ jobs:
         with:
           path: |
             ~/.local/share/virtualenvs
-            ~/.local/bin
+            ~/.cache/pip
           key: ${{ runner.os }}-python-${{ steps.setup-python.outputs.python-version }}-pipenv-${{ hashFiles('Pipfile.lock') }}
         
 
@@ -47,7 +47,7 @@ jobs:
         with:
           path: |
             ~/.local/share/virtualenvs
-            ~/.local/bin
+            ~/.cache/pip
           key: ${{ runner.os }}-python-${{ steps.setup-python.outputs.python-version }}-pipenv-${{ hashFiles('Pipfile.lock') }}
 
       - run: pipenv run pylint account.py
