@@ -29,7 +29,7 @@ jobs:
         with:
           path: |
             ~/.local/share/virtualenvs
-            /bin/pipenv
+            /opt/hostedtoolcache/Python/3.10.13/x64/bin/pipenv
           key: ${{ runner.os }}-pipenv-v2-${{ hashFiles('**/Pipfile.lock') }}
           restore-keys: |
             ${{ runner.os }}-pipenv-v2-
@@ -50,7 +50,7 @@ jobs:
         with:
           path: |
             ~/.local/share/virtualenvs
-            /bin/pipenv
+            /opt/hostedtoolcache/Python/3.10.13/x64/bin/pipenv
           key: ${{ runner.os }}-pipenv-v2-${{ hashFiles('**/Pipfile.lock') }}
           restore-keys: |
             ${{ runner.os }}-pipenv-v2-
