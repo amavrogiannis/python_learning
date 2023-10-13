@@ -23,22 +23,22 @@ class BankAccount:
             data = f"WD: {cash}"
             self.transaction.append(data)
         else:
-            ValueError('Withdraw declined. Insufficient funds.')
+            raise ValueError('Withdraw declined. Insufficient funds.')
 
     def transfer(self, other_account, funds: float) -> None:
         """ BankAccount Transfer object """
         if self.balance >= funds:
-            """ TO - Transfer Out """
+            # """ TO - Transfer Out """
             self.balance -= funds
             data = f"TO: {funds}"
             self.transaction.append(data)
 
-            """ TI - Transfer In """
+            # """ TI - Transfer In """
             other_account.balance += funds
             data = f"TI: {funds}"
             other_account.transaction.append(data)
         else:
-            ValueError('Transfer declined. Insufficient funds.')
+            raise ValueError('Transfer declined. Insufficient funds.')
 
 if __name__ == "__main__":
     alex = BankAccount(1000.00) # Current account balance for Alex is £1000
@@ -51,3 +51,5 @@ if __name__ == "__main__":
 
     print("Transaction:", john.transaction)
     print("Closing balance - John:",john.balance)
+
+# End-of-file (EOF)
