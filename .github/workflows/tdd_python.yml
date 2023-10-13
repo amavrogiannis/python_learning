@@ -16,6 +16,8 @@ jobs:
         with:
           python-version: '3.10'
           cache: pipenv
+          cache-dependency-path: |
+            ./Pipfile.lock
 
       # - name: Install pipenv
       #   run: |
@@ -23,7 +25,6 @@ jobs:
       
       - name: Install dependencies
         run: |
-          pwd && ls
           pipenv install -r ./requirements.txt -d
 
   lint:
@@ -37,6 +38,8 @@ jobs:
         with:
           python-version: '3.10'
           cache: pipenv
+          cache-dependency-path: |
+            ./Pipfile.lock
 
       - run: pipenv run pylint account.py
 
