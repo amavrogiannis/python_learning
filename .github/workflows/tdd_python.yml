@@ -24,7 +24,7 @@ jobs:
         uses: actions/cache@v3
         with:
           key: ${{ runner.os }}-pipenv-${{ hashFiles('**/Pipfile.lock') }}
-          path: ~/.local/share/vurtualenvs
+          path: ${{ env.WORKON_HOME }}
       
       - name: Install dependencies
         if: steps.cache-pipenv.outputs.cache-hit != 'true'
