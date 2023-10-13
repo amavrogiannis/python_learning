@@ -53,7 +53,7 @@ jobs:
             ./Pipfile
             ./Pipfile.lock
 
-      - run: pipenv run pylint account.py
+      - run: pylint account.py
 
   # test:
   #   needs: lint
