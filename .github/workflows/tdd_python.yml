@@ -26,12 +26,6 @@ jobs:
           pwd && ls
           pip install -r ./requirements.txt 
 
-      - id: cache-pipenv
-        uses: actions/cache@v3
-        with:
-          key: ${{ runner.os }}-pipenv-${{ hashFiles('**/requirements.txt') }}
-          path: ~/.cache/pip
-
   lint:
     needs: init
     runs-on: "ubuntu-latest"
