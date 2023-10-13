@@ -4,5 +4,5 @@ class_testing_example.py
 **jenkins/**
 **/exercism.sh
 **/Pipfile
-**/Pipfile.lock
 .gitignore
+account_oop_exercise/Pipfile.lock
