@@ -28,6 +28,7 @@ jobs:
       
       - name: Install dependencies
         run: |
+          pwd && ls
           pipenv install -r requirements.txt --deploy
 
 
