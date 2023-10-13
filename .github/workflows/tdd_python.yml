@@ -10,24 +10,30 @@ jobs:
     runs-on: "ubuntu-latest"
     steps:
       - uses: actions/checkout@v3
+
+      # Setup Python
       - uses: actions/setup-python@v4
         with:
           python-version: '3.10'
-          cache: 'pipenv'
-      - name: Install pipenv
-        run: curl https://raw.githubusercontent.com/pypa/pipenv/master/get-pipenv.py | python
-      - run: pipenv install
 
-      - name: Upload cache
+      - name: Install pipenv
+        run: |
+          python -m pip install --upgrade pipenv
+
+      - id: cache-pipenv
         uses: actions/cache@v3
         with:
-          key: cache-dependencies-${{ github.sha }}
-          path: ./*
+          key: ${{ runner.os }}-pipenv-${{ hashFiles('**/Pipfile.locl') }}
+          path: ~/.local/share/vurtualenvs
+      
+      - name: Install dependencies
+        run: |
+          pipenv install -r requirements.txt --deploy
 
 
-          # cache-dependency-path: |
-          #   ./account_oop_exercise/Pipfile.lock
-          #   ./account_oop_exercise/Pipfile
+        # cache-dependency-path: |
+        #   ./account_oop_exercise/Pipfile.lock
+        #   ./account_oop_exercise/Pipfile
 
         # working-directory: ./account_oop_exercise
 
