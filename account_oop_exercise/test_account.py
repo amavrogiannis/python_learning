@@ -27,9 +27,10 @@ def test_withdraw():
 def test_withdraw_fail():
     """ Testing BankAccount withdraw FAIL object """
     account_this = BankAccount(100.00)
-    account_this.withdraw(200.00)
 
-    assert pytest.raises(ValueError, match='Withdraw declined. Insufficient funds.')
+    with pytest.raises(ValueError) as e:
+        account_this.withdraw(200.00)
+    assert str(e.value) == 'Withdraw declined. Insufficient funds.'
 
 def test_transfer():
     """ Testing BankAccount transfer object """
@@ -43,9 +44,14 @@ def test_transfer():
 def test_transfer_fail():
     """ Testing BankAccount transfer FAIL object """
     account_this = BankAccount(100.00)
-    account_this.withdraw(200.00)
+    accound_2 = BankAccount(50.00)
+    # account_this.transfer(accound2, 200.00)
 
-    assert pytest.raises(ValueError, match='Transfer declined. Insufficient funds.')
+    with pytest.raises(ValueError) as e:
+        account_this.transfer(accound_2, 200.00)
+    assert str(e.value) == 'Transfer declined. Insufficient funds.'
+
+    # assert pytest.raises(ValueError, match='Transfer declined. Insufficient funds.')
 
 def test_transaction():
     """ Testing BankAccount transaction """
