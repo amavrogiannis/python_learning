@@ -37,7 +37,7 @@ jobs:
         run: |
           pip install pylint
 
-      - run: pylint account.py
+      - run: pylint account_oop_exercise/account.py
 
   test:
     needs: lint
@@ -55,4 +55,4 @@ jobs:
         run: |
           pip install pytest
 
-      - run: pytest test_account.py
+      - run: pytest account_oop_exercise/test_account.py
