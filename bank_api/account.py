@@ -11,10 +11,10 @@ class BankAccount:
         print(f"Balance: {balance:.2f}")
         self.transactions = []
 
-    def deposit(self, ammount: int) -> None:
+    def deposit(self, amount: int) -> None:
         """ BankAccount Deposit object """
-        self.balance += ammount
-        data = f"DP: {ammount}"
+        self.balance += amount
+        data = f"DP: {amount}"
         self.transactions.append(data)
 
     def withdraw(self, cash: int) -> None:
