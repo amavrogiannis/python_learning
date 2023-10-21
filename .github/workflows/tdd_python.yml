@@ -2,6 +2,8 @@ name: 'Exercise test checks'
 
 on: 
   push:
+    paths:
+      - account_oop_exercise/**
     branches:
       - master
 
