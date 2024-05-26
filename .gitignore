@@ -6,3 +6,4 @@ class_testing_example.py
 **/Pipfile
 .gitignore
 account_oop_exercise/Pipfile.lock
+.DS_Store
